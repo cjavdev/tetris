@@ -28,7 +28,15 @@ export class Game {
   }
 
   step() {
-    _.each(this.fallingTiles, (tile) => tile.fall());
+    this.board.resetGrid();
+    _.each(this.fallingTiles, (tile) => {
+      if (this.board.atBottom(tile)) {
+        this.board.freeze(tile);
+        _.remove(this.fallingTiles, tile);
+      } else {
+        tile.fall();
+      }
+    }, this);
   }
 }
 

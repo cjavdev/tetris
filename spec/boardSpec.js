@@ -33,4 +33,30 @@ describe('Board', function() {
     var b = new Board(5, 6);
     expect(b.empty([0, 0])).toEqual(true);
   });
+
+  it('atBottom is true if cells in the tile touch bottom of grid', function () {
+    var b = new Board(5, 6);
+    var fakeTile = { cells: () => [[4, 0]] };
+    expect(b.atBottom(fakeTile)).toEqual(true);
+  });
+
+  it('atBottom is false if no cells in the tile touch bottom of grid', function () {
+    var b = new Board(5, 6);
+    var fakeTile = { cells: () => [[1, 0]] };
+    expect(b.atBottom(fakeTile)).toEqual(false);
+  });
+
+  it('atBottom is true if cells in the tile touch top of other tiles', function () {
+    var b = new Board(5, 6);
+    b.mark([4, 0], 'x');
+    var fakeTile = { cells: () => [[3, 0]] };
+    expect(b.atBottom(fakeTile)).toEqual(true);
+  });
+
+  it('atBottom is false if cells in the tile dont touch top of other tiles', function () {
+    var b = new Board(5, 6);
+    b.mark([4, 0], 'x');
+    var fakeTile = { cells: () => [[2, 0]] };
+    expect(b.atBottom(fakeTile)).toEqual(false);
+  });
 });

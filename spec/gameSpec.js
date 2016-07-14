@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import {Board} from '../js/board.js';
 import {Game} from '../js/game.js';
 import {Tile} from '../js/tile.js';
 
@@ -19,8 +20,8 @@ describe('Game', function() {
     expect(g.fallingTiles).toEqual([tile]);
   });
 
-  it('step moves all tiles down', function () {
-    var fakeBoard = {mid: 5, place: _.identity};
+  it('step moves all falling tiles down', function () {
+    var fakeBoard = new Board(5, 10);
     var g = new Game(fakeBoard);
     var tile = g.spawnTile();
     expect(tile.position[0]).toEqual(0);

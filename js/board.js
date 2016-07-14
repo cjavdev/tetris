@@ -5,7 +5,12 @@ export class Board {
     this.height = height;
     this.width = width;
     this.mid = _.floor(width / 2);
-    this.grid = _.map(_.times(height), () => _.times(width, () => null));
+    this.resetGrid();
+    this.frozenGrid = _.map(_.times(height), () => _.times(width, () => null));
+  }
+
+  resetGrid() {
+    this.grid = _.map(_.times(this.height), () => _.times(this.width, () => null));
   }
 
   place(tile) {
@@ -25,6 +30,17 @@ export class Board {
   at(position) {
     var [x, y] = position;
     return this.grid[x][y];
+  }
+
+  atBottom(tile) {
+    return _.some(tile.cells(), ([x, y]) => {
+      return x + 1 >= this.height || !this.empty([x + 1, y]);
+    });
+  }
+
+  freeze(tile) {
+    var [x, y] = tile.position;
+    this.frozenGrid[x][y] = tile.klass;
   }
 
   fits(position, tile) {
