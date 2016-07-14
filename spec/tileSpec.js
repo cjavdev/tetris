@@ -7,7 +7,6 @@ describe('Tile', function() {
     expect(t.layout).toEqual([[1], [0]]);
     expect(t.klass).toEqual('test-klass');
     expect(t.position).toEqual([0, 0]);
-    // default orientation to zero
     expect(t.orientation).toEqual(0);
   });
 
@@ -69,5 +68,11 @@ describe('Tile', function() {
     var t = new Tile([[0, 1, 1, 0], [1, 1, 0, 0]], 'test-klass', [3, 5]);
     t.rotateRight();
     expect(t.cells()).toEqual([[3, 5], [4, 5], [4, 6], [5, 6]]);
+  });
+
+  it('falls one row at a time', function () {
+    var t = new Tile([[0, 1, 1, 0], [1, 1, 0, 0]], 'test-klass', [3, 5]);
+    t.fall();
+    expect(t.position).toEqual([4, 5]);
   });
 });

@@ -63,6 +63,11 @@ export class Tile {
   rotateRight() {
     this.orientation = (this.orientation + 90) % 360;
   }
+
+  fall() {
+    var [x, y] = this.position;
+    this.position = [x + 1, y];
+  }
 }
 
 function rotate90(matrix) {
