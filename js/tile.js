@@ -18,17 +18,74 @@ export class Tile {
     this.orientation = orientation;
   }
 
+  // Map local cells to cells relative to the position of the tile.
   cells() {
-    var [x, y] = this.position;
-    var cells = [];
-
-    return cells;
+    var [x1, y1] = this.position;
+    return _.map(this.localCells(), (cell) => {
+      var [x2, y2] = cell;
+      return [x1 + x2, y1 + y2];
+    });
   }
 
   // What are the cells relative to this layout if pos is 0, 0?
-  _localCells() {
-
+  localCells() {
+    var cells = [];
+    _.each(this.orientedLayout(), (row, i) => {
+      _.each(row, (mark, j) => {
+        if (mark) {
+          cells.push([i, j]);
+        }
+      });
+    });
+    return cells;
   }
+
+  // Rotates the layout matrix based on orientation.
+  // [[0, 1, 1, 0],
+  //  [1, 1, 0, 0]]
+  // ... to ...
+  // [[1, 0],
+  //  [1, 1],
+  //  [0, 1],
+  //  [0, 0]]
+  orientedLayout() {
+    var layout = this.layout;
+    _.times(this.orientation / 90, () => {
+      layout = rotate90(layout);
+    });
+    return layout;
+  }
+
+  rotateLeft() {
+    this.orientation = (this.orientation + 270) % 360;
+  }
+
+  rotateRight() {
+    this.orientation = (this.orientation + 90) % 360;
+  }
+}
+
+function rotate90(matrix) {
+  // Transpose
+  // Reverse each rows
+  return reverseRows(transpose(matrix));
+}
+
+function reverseRows(matrix) {
+  return _.map(matrix, (x) => _.reverse(x));
+}
+
+function transpose(matrix) {
+  var result = [];
+  for(var i = 0; i < matrix.length; i++) {
+    for(var j = 0; j < matrix[i].length; j++) {
+      if(!result[j]) {
+        result[j] = [];
+      }
+      result[j][i] = matrix[i][j];
+    }
+  }
+  return result;
 }
 
 export const TILES = {
