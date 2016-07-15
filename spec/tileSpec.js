@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import {Tile} from '../js/tile.js';
+import {Tile} from '../lib/tile.js';
 
 describe('Tile', function() {
   it('is initialized with a layout, klass and position', function () {

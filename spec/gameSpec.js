@@ -1,7 +1,7 @@
 import _ from 'lodash';
-import {Board} from '../js/board.js';
-import {Game} from '../js/game.js';
-import {Tile} from '../js/tile.js';
+import {Board} from '../lib/board.js';
+import {Game} from '../lib/game.js';
+import {Tile} from '../lib/tile.js';
 
 describe('Game', function() {
   it('is initialized with a board', function () {

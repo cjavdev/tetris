@@ -38,16 +38,16 @@
   <body>
     <div class="board">
     </div>
-    <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.js"></script>
-    <script src="js/game.js"></script>
+    <button id="rotate-left">Rotate Left</button>
+    <button id="rotate-right">Rotate Right</button>
+    <br>
+    <button id="move-left">Move Left</button>
+    <button id="move-right">Move Right</button>
+
+    <script src="jspm_packages/system.js"></script>
+    <script src="config.js"></script>
     <script>
-      console.log('start');
-      var g = new Game();
-      var t = new Tile(tile.s, 's', [3, 3]);
-      var b = new Board([t]);
-      var v = new BoardView($('.board'), b);
-      v.render();
+      System.import('lib/main.js');
     </script>
   </body>
 </html>

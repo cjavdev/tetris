@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import {Board} from '../js/board.js';
+import {Board} from '../lib/board.js';
 
 describe('Board', function() {
   it('is initialized with a dimension', function () {
@@ -58,5 +58,30 @@ describe('Board', function() {
     b.mark([4, 0], 'x');
     var fakeTile = { cells: () => [[2, 0]] };
     expect(b.atBottom(fakeTile)).toEqual(false);
+  });
+
+  it('fits when cells are on board do not overlap', function () {
+    var b = new Board(5, 6);
+    b.mark([4, 0], 'x');
+    var fakeTile = { cells: () => [[-2, 0]] };
+    expect(b.fits(fakeTile)).toBe(false);
+    var fakeTile = { cells: () => [[2, 6]] };
+    expect(b.fits(fakeTile)).toBe(false);
+  });
+
+  it('fits when cells do not overlap', function () {
+    var b = new Board(5, 6);
+    b.mark([4, 0], 'x');
+    var fakeTile = { cells: () => [[2, 0]] };
+    expect(b.fits(fakeTile)).toBe(true);
+    b.mark([2, 0], 'x');
+    expect(b.fits(fakeTile)).toBe(false);
+  });
+
+  it('freeze updates the frozen grid', function () {
+    var b = new Board(5, 6);
+    var fakeTile = { klass: 'x', cells: () => [[2, 0]] };
+    b.freeze(fakeTile);
+    expect(b.frozenGrid[2][0]).toEqual('x');
   });
 });
