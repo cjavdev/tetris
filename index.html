@@ -1,48 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title></title>
-    <style>
-      .board > div > div {
-        border: black solid thin;
-        width: 25px;
-        height: 25px;
-        float: left;
-      }
-      .board > div {
-        clear: both;
-      }
-      .i {
-        background-color: #00FFFF;
-      }
-      .j {
-        background-color: #0000FF;
-      }
-      .l {
-        background-color: #FFA500;
-      }
-      .o {
-        background-color: #FFFF00;
-      }
-      .s {
-        background-color: #00FF00;
-      }
-      .t {
-        background-color: #AA00FF;
-      }
-      .z {
-        background-color: #FF0000;
-      }
-    </style>
+    <title>Simple Tetris</title>
+    <link href='https://fonts.googleapis.com/css?family=Economica:400,700'
+    rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="./css/style.css">
   </head>
   <body>
-    <div class="board">
+    <div>h => Move Left</div>
+    <div>j => Move Down</div>
+    <div>k => Rotate (ha, no up in tetris!)</div>
+    <div>l => Move Right</div>
+
+    <div class="game">
+      <div class="board"></div>
     </div>
-    <button id="rotate-left">Rotate Left</button>
-    <button id="rotate-right">Rotate Right</button>
-    <br>
-    <button id="move-left">Move Left</button>
-    <button id="move-right">Move Right</button>
 
     <script src="./jspm_packages/system.js"></script>
     <script src="./config.js"></script>

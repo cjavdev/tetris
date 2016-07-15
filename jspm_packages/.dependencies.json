@@ -69,5 +69,7 @@
   "npm:lodash@4.13.1": {},
   "npm:jquery@3.1.0": {
     "process": "github:jspm/nodelibs-process@^0.1.0"
-  }
+  },
+  "github:madrobby/keymaster@1.6.3": {},
+  "github:w1zeman1p/keymaster@1.6.3": {}
 }

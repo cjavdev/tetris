@@ -1,0 +1,47 @@
+body {
+  background-color: #543b5d;
+  color: white;
+  font-family: Consolas, monaco, monospace;
+  font-size: 20px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+  line-height: 26.4px;
+}
+
+.game {
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  margin-top: -75px;
+}
+.board > div > div {
+  border: #555a53 solid thin;
+  width: 25px;
+  height: 25px;
+  float: left;
+}
+.board > div {
+  clear: both;
+}
+.i {
+  background-color: #3EB890;
+}
+.j {
+  background-color: #70CADB;
+}
+.l {
+  background-color: #E8A723;
+}
+.o {
+  background-color: #E01765;
+}
+.s {
+  background-color: #de8ed3;
+}
+.t {
+  background-color: #B9011D;
+}
+.z {
+  background-color: #DBD9DC;
+}

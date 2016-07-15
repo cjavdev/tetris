@@ -1,6 +1,5 @@
 System.config({
-  // baseURL: "/",
-  baseURL: "/tetris",
+  baseURL: "/",
   defaultJSExtensions: true,
   transpiler: "babel",
   babelOptions: {
@@ -20,6 +19,8 @@ System.config({
     "core-js": "npm:core-js@1.2.6",
     "jquery": "npm:jquery@3.1.0",
     "lodash": "npm:lodash@4.13.1",
+    "madrobby/keymaster": "github:madrobby/keymaster@1.6.3",
+    "w1zeman1p/keymaster": "github:w1zeman1p/keymaster@1.6.3",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
     },

@@ -1,0 +1,1 @@
+module.exports = require("github:w1zeman1p/keymaster@1.6.3/keymaster.js");
