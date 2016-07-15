@@ -1,5 +1,6 @@
 System.config({
-  baseURL: "/",
+  // baseURL: "/",
+  baseURL: "/tetris",
   defaultJSExtensions: true,
   transpiler: "babel",
   babelOptions: {
